@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <title>Epic Kids Learning</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f0f8ff; text-align: center; }
+    h1 { color: #4b0082; }
+    .class-btn { padding: 10px 20px; margin: 10px; background: #8a2be2; color: white; border: none; border-radius: 5px; cursor: pointer; }
+    .video-section, .game-section { margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <h1>Epic Kids Learning</h1>
+  <p>क्लास चुनें (1st - 10th)</p>
+  <div id="classes">
+    <button class="class-btn" onclick="loadContent(1)">1st</button>
+    <button class="class-btn" onclick="loadContent(2)">2nd</button>
+    <button class="class-btn" onclick="loadContent(3)">3rd</button>
+    <button class="class-btn" onclick="loadContent(4)">4th</button>
+    <button class="class-btn" onclick="loadContent(5)">5th</button>
+    <button class="class-btn" onclick="loadContent(6)">6th</button>
+    <button class="class-btn" onclick="loadContent(7)">7th</button>
+    <button class="class-btn" onclick="loadContent(8)">8th</button>
+    <button class="class-btn" onclick="loadContent(9)">9th</button>
+    <button class="class-btn" onclick="loadContent(10)">10th</button>
+  </div>
+
+  <div class="video-section">
+    <h2>AI Video</h2>
+    <video id="aiVideo" width="600" controls></video>
+    <p><button onclick="playVoice()">AI Voice</button></p>
+  </div>
+
+  <div class="game-section">
+    <h2>Quiz Game</h2>
+    <p id="quizQuestion">क्विज़ यहाँ दिखेगा</p>
+    <button onclick="checkAnswer('A')">A</button>
+    <button onclick="checkAnswer('B')">B</button>
+    <button onclick="checkAnswer('C')">C</button>
+  </div>
+
+  <script>
+    const videos = {
+      1: "https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4",
+      2: "https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4",
+      3: "https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4",
+      4: "https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4",
+      5: "https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4",
+      6: "https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4",
+      7: "https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4",
+      8: "https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4",
+      9: "https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4",
+      10:"https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4"
+    };
+
+    const quiz = {
+      question: "भारत की राजधानी क्या है?",
+      options: ["A) मुंबई", "B) दिल्ली", "C) कोलकाता"],
+      answer: "B"
+    };
+
+    function loadContent(classNum){
+      document.getElementById('aiVideo').src = videos[classNum];
+    }
+
+    function playVoice(){
+      const msg = new SpeechSynthesisUtterance("यह एक उदाहरण AI वॉइस है। आप इस क्लास का वीडियो देख सकते हैं।");
+      msg.lang = 'hi-IN';
+      window.speechSynthesis.speak(msg);
+    }
+
+    function checkAnswer(ans){
+      if(ans === quiz.answer){
+        alert("सही उत्तर! 🎉");
+      } else {
+        alert("गलत उत्तर! 😢");
+      }
+    }
+  </script>
+</body>
+</html>
